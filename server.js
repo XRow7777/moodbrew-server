@@ -69,6 +69,10 @@ app.post('/collection/:collectionName', async (req, res) => {
     const database = client.db("moodbrew");
     const collection = database.collection(collectionName);
 
+    if (collectionName === "orders") {
+      newData.createdAt = new Date();
+    }
+    
     const result = await collection.insertOne(newData);  // Insert the new document
     res.status(201).send({ message: 'Document inserted', id: result.insertedId });
   } catch (error) {
