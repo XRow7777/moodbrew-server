@@ -69,7 +69,7 @@ app.post('/collection/:collectionName', async (req, res) => {
     const database = client.db("moodbrew");
     const collection = database.collection(collectionName);
 
-    if (collectionName === "orders") {
+    if (collectionName === "orders" || collectionName === "archive") {
       newData.createdAt = new Date();
     }
     
